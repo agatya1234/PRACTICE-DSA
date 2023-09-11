@@ -1,6 +1,6 @@
 class Solution {
  public:
-  ListNode* swapPairs(ListNode* head) {
+  /*ListNode* swapPairs(ListNode* head) {
     if(head==NULL ||head->next==NULL){
       return head;
     }
@@ -12,7 +12,20 @@ class Solution {
         p=p->next->next;
         q=q->next->next;
     }
-    return head;
+    return head;*/
+    ListNode*dummy=new ListNode();
+    ListNode* ptr1=dummy;
+     ListNode*curr=head;
+    while(curr!=NULL && curr->next!=NULL){
+       ptr1->next=curr->next;
+       curr->next=curr->next->next;
+       ptr1->next->next=curr;
+       curr=curr->next;
+       ptr1=ptr1->next->next;
+    }
+
+      return dummy->next;
+
 
   }
 };
